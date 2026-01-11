@@ -17,8 +17,7 @@ def mask_account_card(number_input: str) -> str:
 def get_date(date_input: str) -> str:
     """Функция принимает на вход строку с датой, возвращает только дату в стандартном формате"""
     date_input_str = str(date_input).replace(" ", "").replace(":", "").replace("-", "").replace(".", "")
-    print(date_input_str)
-    return f'"{date_input_str[4:6]}.{date_input_str[6:8]}.{date_input_str[:4]}"'
+    return f'{date_input_str[4:6]}.{date_input_str[6:8]}.{date_input_str[:4]}'
 
 
 if __name__ == "__main__":
