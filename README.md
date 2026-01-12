@@ -1,7 +1,7 @@
 <h1 align="center">Hi there, I'm <a href="https://daniilshat.ru/" target="_blank">Vladislav</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">Chemistry student, who is studying progmming</h3>
-<img src="путь к файлу" alt="альтернативный текст">
+<img src=""C:\Users\usger\OneDrive\Desktop\ai-generative-concept-assistant-scientific-600nw-2580409325.webp"" alt="альтернативный текст">
 
 <!--
 **vvoloshin77/vvoloshin77** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
