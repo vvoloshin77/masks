@@ -1,7 +1,7 @@
 <h1 align="center">Hi there, I'm <a href="https://daniilshat.ru/" target="_blank">Vladislav</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">Chemistry student, who is studying progmming</h3>
-<img src="C:\Users\usger\OneDrive\Desktop\i.jpg" alt="альтернативный текст">
+<img src="https://www.shutterstock.com/image-vector/science-chemistry-concept-abstract-polygonal-260nw-2416495247.jpg" alt="альтернативный текст">
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Computer+science+student)](https://git.io/typing-svg)
 
 <!--
