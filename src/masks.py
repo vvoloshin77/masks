@@ -1,6 +1,6 @@
 def get_mask_card_number(card_number: int) -> str:
     """Функция на вход принмает номер карты в виде число и возвращает маску"""
-    card_number_str = str(card_number).replace(" ", "")
+    card_number_str = str(card_number).replace(" ", "").replace("-", "")
     if len(card_number_str) < 16:
         return "Номер карты введен неверно"
     if len(card_number_str) == 16:
@@ -9,8 +9,8 @@ def get_mask_card_number(card_number: int) -> str:
         return f"{card_number_str[:4]} {card_number_str[4:6]}** **** {card_number_str[-4:]}"
 
 
-if __name__ == "__main__":
-    print(get_mask_card_number(8994567891011123099905558))
+#if __name__ == "__main__":
+    #print(get_mask_card_number(8994567891011123099905558))
 
 
 # def get_mask_card_number(card_number: int) -> str:
@@ -29,9 +29,12 @@ if __name__ == "__main__":
 
 def get_mask_account(account_number: int) -> str:
     """Функция на вход принмает номер счета в виде число и возвращает маску"""
-    account_number_str = str(account_number).replace(" ", "")
-    return f"**{account_number_str[-4:]}"
+    account_number_str = str(account_number).replace(" ", "").replace("-", "")
+    if len(account_number_str) < 10:
+        return "Номер счета введен неверно"
+    else:
+        return f"**{account_number_str[-4:]}"
 
 
-if __name__ == "__main__":
-    print(get_mask_account(89945678910111213141516))
+#if __name__ == "__main__":
+    #print(get_mask_account(89945678910111213141516))

@@ -20,7 +20,7 @@ def get_date(date_input: str) -> str:
     return f"{date_input_str[4:6]}.{date_input_str[6:8]}.{date_input_str[:4]}"
 
 
-if __name__ == "__main__":
-    print(mask_account_card("Счет 64686473678894779589"))
-    print(mask_account_card("Visa Platinum 8990922113665229"))
-    print(get_date("2024-03-11T02:26:18.671407"))
+#if __name__ == "__main__":
+    #print(mask_account_card("Счет 64686473678894779589"))
+    #print(mask_account_card("Visa Platinum 8990922113665229"))
+    #print(get_date("2024-03-11T02:26:18.671407"))
