@@ -17,7 +17,7 @@ from src.processing import filter_by_state, sort_by_date
         )
     ],
 )
-def test_filter_by_state(state: list[dict[str, Any]], expected: str):
+def test_filter_by_state(state: list[dict[str, Any]], expected: str) -> None:
     assert filter_by_state(state) == expected
 
 
@@ -40,5 +40,5 @@ def test_filter_by_state(state: list[dict[str, Any]], expected: str):
         )
     ],
 )
-def test_sort_by_date(sort: list[dict[str, Any]], expected: str):
+def test_sort_by_date(sort: list[dict[str, Any]], expected: str) -> None:
     assert sort_by_date(sort) == expected
