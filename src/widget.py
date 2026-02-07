@@ -13,6 +13,7 @@ def mask_account_card(number_input: str) -> str:
 
     return "Неверное значение"
 
+
 def get_date(date_input: str) -> str:
     """Функция принимает на вход строку с датой, возвращает только дату в стандартном формате"""
     date_input_str = str(date_input).replace(" ", "").replace(":", "").replace("-", "").replace(".", "")
