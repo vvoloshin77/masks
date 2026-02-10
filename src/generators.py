@@ -18,7 +18,7 @@ def transaction_descriptions(transactions: List[dict], description: str) -> Iter
             yield trans_desc
 
 
-def card_number_generator(start=1, end=9999) -> Generator:
+def card_number_generator(start: int=1, end: int=9999) -> Generator[str, None, None]:
     """Функция генерации номера банковских карт в формате ХХХХ ХХХХ ХХХХ ХХХХ"""
 
     for item in range(start, end + 1):

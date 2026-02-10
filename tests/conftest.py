@@ -40,7 +40,7 @@ def sort() -> list[dict]:
 
 
 @pytest.fixture
-def transactions() -> list[dict]:
+def transactions() -> list[tuple]:
     return [
         (
             {
