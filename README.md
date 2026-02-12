@@ -1,20 +1,15 @@
-<h1 align="center">Hi there, I'm <a href="https://daniilshat.ru/" target="_blank">Vladislav</a> 
-<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
-<h3 align="center">Chemistry student, who is studying progmming</h3>
-<img src="https://www.shutterstock.com/image-vector/science-chemistry-concept-abstract-polygonal-260nw-2416495247.jpg" alt="альтернативный текст">
-![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Computer+science+student)](https://git.io/typing-svg)
-
-<!--
-**vvoloshin77/vvoloshin77** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+# Проект для обработки банковских операций
+## Цель проекта
+Проект предназначен для обработки списка банковских операций: фильтрации по статусу и сортировки по дате.
+## Установка
+1. Клонировать репозиторий: git clone
+2. Перейти в папку проекта: cd HW-1
+3. Установить зависимости (если потребуется): poetry install
+## Использование
+1. filter_by_state - Функция фильтрует список операций по статусу state
+2. sort_by_date - Функция возврвщвет отсортированный по дате список
+3. mask_account_card - Функция маскиирует номер карты и счета
+4. get_date - Функция принимает строку, возвращает дату в стандартном формате
+5. filter_by_currency - Функция поочередно возвращает транзакции
+6. transaction_description - Функция принимает список, возвращает описание транзакций
+7. card_number_generator - Функция генерации номера банковских карт в формате: ХХХХ ХХХХ ХХХХ ХХХХ
