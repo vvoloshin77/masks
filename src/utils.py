@@ -4,7 +4,6 @@ import json
 
 def transaction_amount(path: str) -> list[dict]:
     """ Функция принимает путь до JSON-файла и возвращает список транзакций"""
-    operations_data = []
     try:
         absolute_path = os.path.abspath(path)
         with open(absolute_path, encoding='utf-8') as operations_file:
@@ -18,12 +17,3 @@ def transaction_amount(path: str) -> list[dict]:
     except FileNotFoundError:
         print('Файл не найден')
         return []
-
-
-if __name__ == '__main__':
-    transactions = transaction_amount('data/operations.json')
-    print(transactions)
-
-
-
-

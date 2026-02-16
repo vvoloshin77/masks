@@ -18,5 +18,3 @@ def get_currency_rate(currency_code: str, amount: float) -> float:
 
     result = response.json()
     return float(result['result'])
-
-
