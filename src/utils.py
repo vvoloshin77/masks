@@ -1,5 +1,6 @@
 import json
 import os
+from pprint import pprint
 
 
 def transaction_amount(path: str) -> list[dict]:
@@ -17,3 +18,9 @@ def transaction_amount(path: str) -> list[dict]:
     except FileNotFoundError:
         print("Файл не найден")
         return []
+
+
+if __name__ == "__main__":  # pragma: no cover
+    transactions = transaction_amount("../data/operations.json")
+    pprint(transactions)
+
