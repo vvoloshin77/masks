@@ -8,13 +8,12 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 
-def get_currency_rate(transaction_list: list[dict]) -> float:
+def get_currency_rate(transaction: dict) -> float:
     """Функция принимает на вход транзакцию и возвращает сумму транзакции"""
 
-    data = transaction_list[1]
 
-    currency_code = data['operationAmount']['currency']['code']
-    op_amount = float(data['operationAmount']['amount'])
+    currency_code = transaction['operationAmount']['currency']['code']
+    op_amount = float(transaction['operationAmount']['amount'])
 
     if currency_code != "RUB":
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency_code}&amount={op_amount}"
@@ -24,11 +23,11 @@ def get_currency_rate(transaction_list: list[dict]) -> float:
 
         result = response.json()
         return result
-    else:
-        return op_amount
+
+    return op_amount
 
 
 if __name__ == "__main__":  # pragma: no cover
     transactions = transaction_amount("../data/operations.json")
-    rate = get_currency_rate(transactions)
+    rate = get_currency_rate(transactions[0])
     pprint(rate)
