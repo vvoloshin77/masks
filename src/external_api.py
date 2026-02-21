@@ -1,8 +1,10 @@
 import os
-import requests
 from pprint import pprint
-from utils import transaction_amount
+
+import requests
 from dotenv import load_dotenv
+
+from src.utils import transaction_amount
 
 load_dotenv()
 API_KEY = os.getenv("API_KEY")

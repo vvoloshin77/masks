@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import Mock, patch
+from src.utils import transaction_amount
 from src.external_api import get_currency_rate, API_KEY
 
 
