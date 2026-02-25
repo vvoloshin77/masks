@@ -4,8 +4,6 @@ from pprint import pprint
 import requests
 from dotenv import load_dotenv
 
-from src.utils import transaction_amount
-
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
@@ -13,7 +11,7 @@ API_KEY = os.getenv("API_KEY")
 def get_currency_rate(transaction: dict) -> float:
     """Функция принимает на вход транзакцию и возвращает сумму транзакции"""
 
-    currency_code = transaction['operationAmount']['currency']['code']
+    currency_code = str(transaction['operationAmount']['currency']['code'])
     op_amount = float(transaction['operationAmount']['amount'])
 
     if currency_code != "RUB":
