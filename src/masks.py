@@ -1,7 +1,18 @@
+import logging
+
+logger = logging.getLogger('masks')
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(filename)s - %(levelname)s - %(message)s',
+    filename='logs/masks.log',
+    filemode='w'
+)
+
 def get_mask_card_number(card_number: int) -> str:
     """Функция на вход принмает номер карты в виде число и возвращает маску"""
     card_number_str = str(card_number).replace(" ", "").replace("-", "")
     if len(card_number_str) < 16:
+        logger.error("Номер карты введен неверно")
         return "Номер карты введен неверно"
     if len(card_number_str) == 16:
         return f"{card_number_str[:4]} {card_number_str[4:6]}** **** {card_number_str[-4:]}"
@@ -36,5 +47,5 @@ def get_mask_account(account_number: int) -> str:
         return f"**{account_number_str[-4:]}"
 
 
-# if __name__ == "__main__":
-# print(get_mask_account(89945678910111213141516))
+if __name__ == "__main__": # pragma: no cover
+ print(get_mask_account(89945678910111213141516))
