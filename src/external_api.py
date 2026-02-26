@@ -20,7 +20,7 @@ def get_currency_rate(transaction: dict) -> float:
 
         response = requests.get(url, headers=headers, timeout=10)
 
-        result = response.json()
+        result = response.json()["result"]
         return result
 
     return op_amount

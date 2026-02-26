@@ -1,6 +1,5 @@
 import unittest
 from unittest.mock import Mock, patch
-from src.utils import transaction_amount
 from src.external_api import get_currency_rate, API_KEY
 
 
@@ -12,9 +11,7 @@ class TestExternalAPI(unittest.TestCase):
         mock_response.json.return_value = {"result": 76.754206}
         mock_get.return_value = mock_response
 
-        transaction = [
-            {"operationAmount": {"amount": "1000.0", "currency": {"code": "USD"}}}
-        ]
+        transaction = {"operationAmount": {"amount": "1000.0", "currency": {"code": "USD"}}}
 
         result = get_currency_rate(transaction)
 
@@ -24,7 +21,8 @@ class TestExternalAPI(unittest.TestCase):
 
         mock_get.assert_called_once_with(
             "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=1000.0",
-            headers={"apikey": API_KEY}
+            headers={"apikey": API_KEY},
+            timeout= 10
         )
 
     def test_get_currency_rate_rub(self):
