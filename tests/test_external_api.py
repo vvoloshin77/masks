@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import Mock, patch
-from src.external_api import get_currency_rate, API_KEY
+
+from src.external_api import API_KEY, get_currency_rate
 
 
 class TestExternalAPI(unittest.TestCase):
@@ -22,7 +23,7 @@ class TestExternalAPI(unittest.TestCase):
         mock_get.assert_called_once_with(
             "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=1000.0",
             headers={"apikey": API_KEY},
-            timeout= 10
+            timeout=10,
         )
 
     def test_get_currency_rate_rub(self):
