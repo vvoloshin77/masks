@@ -37,3 +37,25 @@ def sort() -> list[dict]:
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     ]
+
+
+@pytest.fixture
+def transactions() -> list[tuple]:
+    return [
+        (
+            {
+                "id": 939719570,
+                "state": "EXECUTED",
+                "date": "2018-06-30T02:08:58.425572",
+                "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+            },
+            {
+                "id": 939719570,
+                "state": "EXECUTED",
+                "date": "2018-06-30T02:08:58.425572",
+                "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+            },
+            "USD",
+        ),
+        ([], [], "USD"),
+    ]
