@@ -1,11 +1,11 @@
 import json
-import os
 import logging
+import os
 from pprint import pprint
 
 logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler('../logs/utils.log', mode='w', encoding='UTF-8')
-file_formatter = logging.Formatter('%(asctime)s %(filename)s %(levelname)s: %(message)s')
+file_handler = logging.FileHandler("../logs/utils.log", mode="w", encoding="UTF-8")
+file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)

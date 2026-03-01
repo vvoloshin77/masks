@@ -1,13 +1,14 @@
 import logging
-#import os
 
-#if not os.path.exists('logs'):
-    #os.makedirs('logs')
+# import os
+
+# if not os.path.exists('logs'):
+# os.makedirs('logs')
 
 
 logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler('../logs/masks.log', mode='w', encoding='UTF-8')
-file_formatter = logging.Formatter('%(asctime)s %(filename)s %(levelname)s: %(message)s')
+file_handler = logging.FileHandler("../logs/masks.log", mode="w", encoding="UTF-8")
+file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
