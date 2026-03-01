@@ -18,7 +18,7 @@ def log(filename: Optional[str] = None) -> Callable:
                         f.write(log_message)
                 else:
                     print(log_message)
-            except Exception as e:
+            except Exception:
                 error_type = traceback.format_exc().strip().split("\n")[-1]
                 log_message = f"{func.__name__} error: {error_type}. Inputs: {args}, {kwargs}\n"
                 result = None

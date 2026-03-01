@@ -23,4 +23,3 @@ def transaction_amount(path: str) -> list[dict]:
 if __name__ == "__main__":  # pragma: no cover
     transactions = transaction_amount("../data/operations.json")
     pprint(transactions)
-
