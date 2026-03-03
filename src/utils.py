@@ -28,7 +28,8 @@ def transaction_amount(path: str) -> list[dict]:
     except FileNotFoundError:
         logger.error("Ошибка декодирования файла")
         print("Файл не найден")
-        return []
+
+    return []
 
 
 if __name__ == "__main__":  # pragma: no cover
