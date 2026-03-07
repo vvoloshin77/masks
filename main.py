@@ -2,7 +2,8 @@ from pprint import pprint
 from src.utils import transaction_amount
 from src.read_csv import transactions_csv_to_dict
 from src.read_excel import transactions_excel_to_dict
-from src.filter_transaction import filter_transactions_by_state
+from src.filter_transaction import filter_transactions_by_state, filter_transactions_by_date, \
+    filter_transactions_by_keyword
 
 
 def main():
@@ -15,7 +16,6 @@ def main():
     3. Получить информацию о транзакциях из XLSX-файла
     """
     print(greetings)
-
 
     while True:
         user_choice = input('Пользователь: ')
@@ -43,11 +43,36 @@ def main():
         if status in statuses:
             print(f'\nОперации отфильтрованы по статусу: {status}\n')
             filtered_transactions = filter_transactions_by_state(transactions, status)
-            pprint(filtered_transactions)
+            #pprint(filtered_transactions)
             break
         else:
             print(f"Статус операции: '{status}', некорректный.\n")
 
+    if filtered_transactions:
+        user_sort_choice = input('\nОтсортировать операции по дате ?\nВведите Да/Нет:  ').strip().lower()
+        if user_sort_choice == 'да':
+            user_order_choice = input(
+                '\nОтсортировать по возрастанию или по убыванию ?\nВведите по возрастанию/по убыванию: ').strip().lower()
+            ascending = True if 'по возрастанию' in user_order_choice else False
+            filtered_transactions = filter_transactions_by_date(filtered_transactions, ascending)
+
+        user_code_choice = input('\nВыводить только рублевые транзакции ?\nВведите Да/Нет:  ').strip().lower()
+        if user_code_choice == ['RUB']:
+            filtered_transactions = [t for t in transactions if t['currency_code'] == 'RUB']
+
+        user_sort_by_word = input(
+            '\nОтфильтровать список транзакций по определенному слову в описании?\nВведите Да/Нет:  ').strip().lower()
+        if user_sort_by_word == 'да':
+            key_word = input('\nВведите слово для фильтрации:  ')
+            filtered_transactions = filter_transactions_by_keyword(filtered_transactions, key_word)
+
+        if filtered_transactions:
+            print('\nРаспечатываю итоговый список транзакций...')
+            print(f'\nВсего банковских операций в выборке: {len(filtered_transactions)}')
+            for transaction in filtered_transactions:
+                print(f'\n{transaction["date"]} {transaction["description"]}\n')
+        else:
+            print('Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
 
 if __name__ == '__main__':  # pragma: no cover
     main()
