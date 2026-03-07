@@ -4,7 +4,8 @@ import os
 from pprint import pprint
 
 logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler("../logs/utils.log", mode="w", encoding="UTF-8")
+file_handler = logging.FileHandler(r"C:\Users\usger\PycharmProjects\APP\logs\utils.log", mode="w", encoding="UTF-8")
+#file_handler = logging.FileHandler("../logs/utils.log", mode="w", encoding="UTF-8")
 file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -33,5 +34,5 @@ def transaction_amount(path: str) -> list[dict]:
 
 
 if __name__ == "__main__":  # pragma: no cover
-    transactions = transaction_amount("../data/operations.json")
+    transactions = transaction_amount(r"C:\Users\usger\PycharmProjects\APP\data\operations.json")
     pprint(transactions)
