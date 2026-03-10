@@ -1,6 +1,6 @@
 import logging
 import json
-#from pprint import pprint
+from pprint import pprint
 
 # import os
 
@@ -56,15 +56,18 @@ def get_mask_account(account_number: int) -> str:
 def get_mask_payment(payment_info: str) -> str:
     """Функция разделяет строку на номер и название, маскирует название"""
     if not payment_info:
-        return "Not valid data"
+        logger.error("Not valid data")
+        return ""
 
     parts = payment_info.split()
     number = parts[-1]
-    name = ''.join(parts[:-1])
+    name = ' '.join(parts[:-1])
 
     if "Счет" in name:
+        logger.info("Функция работает корректно, выводит Счет и маску")
         return f'{name} {get_mask_account(number)}'
     else:
+        logger.info("Функция работает корректно, выводит название платежной системы и маску")
         return f'{name} {get_mask_card_number(number)}'
 
 
@@ -81,4 +84,7 @@ if __name__ == "__main__":  # pragma: no cover
         sender_masked = get_mask_payment(raw_from)
         recipient_masked = get_mask_payment(raw_to)
 
-        print(f'{sender_masked} -> {recipient_masked}')
+        if sender_masked:
+            print(f'{sender_masked} -> {recipient_masked}')
+        else:
+            print(f'{recipient_masked}')
