@@ -16,7 +16,7 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
 
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """Функция на вход принмает номер карты в виде число и возвращает маску"""
     card_number_str = str(card_number).replace(" ", "").replace("-", "")
     if len(card_number_str) < 16:
@@ -42,7 +42,7 @@ def get_mask_card_number(card_number: int) -> str:
 # print(get_mask_card_number(89945678910111213141516))
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: str) -> str:
     """Функция на вход принмает номер счета в виде число и возвращает маску"""
     account_number_str = str(account_number).replace(" ", "").replace("-", "")
     if len(account_number_str) < 10:
