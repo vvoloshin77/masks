@@ -1,5 +1,5 @@
-from pprint import pprint
 from src.utils import transaction_amount
+from src.masks import get_mask_payment
 from src.read_csv import transactions_csv_to_dict
 from src.read_excel import transactions_excel_to_dict
 from src.filter_transaction import filter_transactions_by_state, filter_transactions_by_date, \
@@ -43,7 +43,6 @@ def main():
         if status in statuses:
             print(f'\nОперации отфильтрованы по статусу: {status}\n')
             filtered_transactions = filter_transactions_by_state(transactions, status)
-            #pprint(filtered_transactions)
             break
         else:
             print(f"Статус операции: '{status}', некорректный.\n")
@@ -69,10 +68,31 @@ def main():
         if filtered_transactions:
             print('\nРаспечатываю итоговый список транзакций...')
             print(f'\nВсего банковских операций в выборке: {len(filtered_transactions)}')
+
             for transaction in filtered_transactions:
-                print(f'\n{transaction["date"]} {transaction["description"]}\n')
+                if not transaction:
+                    continue
+
+                raw_from = transaction.get("from", "")
+                raw_to = transaction.get("to", "")
+
+                op_amount = transaction.get("operationAmount", {})
+                amount = op_amount.get("amount", "")
+                currency_data = op_amount.get("currency", {})
+                currency_code = currency_data.get("code", "")
+
+                sender_masked = get_mask_payment(raw_from)
+                recipient_masked = get_mask_payment(raw_to)
+
+                print(f'\n{transaction["date"][:10]} {transaction["description"]}')
+                if sender_masked:
+                    print(f'{sender_masked} -> {recipient_masked}')
+                else:
+                    print(f'{recipient_masked}')
+                print(f'Сумма: {amount} {currency_code}')
         else:
             print('Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
+
 
 if __name__ == '__main__':  # pragma: no cover
     main()
