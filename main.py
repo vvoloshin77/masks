@@ -62,8 +62,8 @@ def main() -> None:
             filtered_transactions = filter_transactions_by_date(filtered_transactions, ascending)
 
         user_code_choice = input('\nВыводить только рублевые транзакции ?\nВведите Да/Нет:  ').strip().lower()
-        if user_code_choice == ["RUB"]:
-            filtered_transactions = [t for t in transactions if t["currency_code"] == "RUB"]
+        if user_code_choice == 'да':
+            filtered_transactions = [t for t in filtered_transactions if t["currency_code"] == "RUB"]
 
         user_sort_by_word = (
             input('\nОтфильтровать список транзакций по определенному слову в описании?\nВведите Да/Нет:  ')
@@ -85,16 +85,14 @@ def main() -> None:
                 raw_from = transaction.get("from", "")
                 raw_to = transaction.get("to", "")
 
-                op_amount = transaction.get("operationAmount", {})
-                amount = op_amount.get("amount", "")
-                currency_data = op_amount.get("currency", {})
-                currency_code = currency_data.get("code", "")
+                amount = transaction.get("amount", "")
+                currency_code = transaction.get("currency_code", "")
 
                 sender_masked = get_mask_payment(raw_from)
                 recipient_masked = get_mask_payment(raw_to)
 
                 print(f'\n{transaction["date"][:10]} {transaction["description"]}')
-                if sender_masked:
+                if sender_masked and recipient_masked:
                     print(f'{sender_masked} -> {recipient_masked}')
                 else:
                     print(f'{recipient_masked}')

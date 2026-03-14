@@ -55,9 +55,10 @@ def get_mask_account(account_number: str) -> str:
 
 def get_mask_payment(payment_info: str) -> str:
     """Функция разделяет строку на номер и название, маскирует название"""
-    if not payment_info:
+    payment_info = str(payment_info)
+    if not payment_info or payment_info == 'nan':
         logger.error("Not valid data")
-        return ""
+        return None
 
     parts = payment_info.split()
     number = parts[-1]
