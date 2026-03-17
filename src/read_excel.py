@@ -8,5 +8,5 @@ def transactions_excel_to_dict(file_path: str) -> list[dict]:
 
 
 if __name__ == "__main__":
-    excel_data = transactions_excel_to_dict("../data/transactions_excel.xlsx")
+    excel_data = transactions_excel_to_dict(r"C:\Users\usger\PycharmProjects\APP\data\transactions_excel.xlsx")
     print(excel_data)
